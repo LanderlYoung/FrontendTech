@@ -1,22 +1,25 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <test prop-message="hello"></test>
-        <users></users>
+        <ul>
+            <li>
+                <router-link to="/user">Users</router-link>
+            </li>
+            <li>
+                <router-link to="/">Test</router-link>
+            </li>
+        </ul>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import Test from './components/Test'
-    import Users from "./components/Users";
-
+    import VueRouter from "vue-router";
 
     export default {
         name: 'app',
-        components: {
-            Users,
-            Test
-        }
+        components: [
+            VueRouter
+        ]
     }
 </script>
 

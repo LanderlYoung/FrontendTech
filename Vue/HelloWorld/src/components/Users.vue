@@ -3,7 +3,7 @@
         <ul>
             <li v-bind:class="{checked: user.checked}" v-for="user in users">
                 <input type="checkbox" class="toggle" v-model="user.checked">
-                {{user.name}}
+                {{user.name}} {{user.email}}
                 <button v-on:click="deleteUser(user)">X</button>
             </li>
         </ul>
@@ -29,9 +29,6 @@
             }
         },
         methods: {
-            check: function (user) {
-                user.checked = !user.checked
-            },
             deleteUser: function (user) {
                 this.users.splice(this.users.indexOf(user), 1)
             }
@@ -39,7 +36,6 @@
         created() {
             this.$http.get('https://jsonplaceholder.typicode.com/users')
                 .then(function (rsp) {
-                    console.log(rsp.body)
                     this.users = rsp.body
                 })
         }
